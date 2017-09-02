@@ -1,11 +1,11 @@
-# Header Tool for CodeX Editor
+# Raw Plugin for CodeX Editor
 
-Header Editor module for text blocks.
+Paste HTML code into your article for creating special blocks.
 
 ## Install via npm
 
 ```shell
-npm i --save codex.editor.header
+npm i --save codex.editor.raw
 ```
 
 #### Connect with Webpack
@@ -13,13 +13,13 @@ npm i --save codex.editor.header
 Include module in your application
 
 ```js
-require('codex.editor.header');
+require('codex.editor.raw');
 ```
 
 Include CSS file
 
 ```css
-@import url("~codex.editor.header/lib/bundle.css");
+@import url("~codex.editor.header/lib/raw.css");
 ```
 
 ## Install directly
