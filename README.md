@@ -19,7 +19,7 @@ require('codex.editor.raw');
 Include CSS file
 
 ```css
-@import url("~codex.editor.header/lib/raw.css");
+@import url("~codex.editor.raw/lib/raw.css");
 ```
 
 ## Install directly
