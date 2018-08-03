@@ -1,3 +1,5 @@
+![](https://badgen.net/badge/CodeX%20Editor/v1.0/gray)
+
 # Raw Plugin for CodeX Editor
 
 Paste HTML code into your article for creating special blocks.
