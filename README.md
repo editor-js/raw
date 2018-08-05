@@ -1,51 +1,75 @@
-![](https://badgen.net/badge/CodeX%20Editor/v1.0/gray)
+![](https://badgen.net/badge/CodeX%20Editor/v2.0/blue)
 
-# Raw Plugin for CodeX Editor
+# Raw Tool for CodeX Editor
 
-Paste HTML code into your article for creating special blocks.
+Raw Tool for the [CodeX Editor](https://ifmo.su/editor).
 
-## Install via npm
+![](https://capella.pics/bb0e24c0-4765-493a-b550-c23ef39fe66d.jpg)
+
+## Installation
+
+### Install via NPM
+
+Get the package
 
 ```shell
-npm i --save codex.editor.raw
+npm i --save-dev codex.editor.raw
 ```
 
-#### Connect with Webpack
+Include module at your application
 
-Include module in your application
-
-```js
-require('codex.editor.raw');
+```javascript
+const Raw = require('codex.editor.raw');
 ```
 
-Include CSS file
+### Download to your project's source dir
 
-```css
-@import url("~codex.editor.raw/lib/raw.css");
+1. Upload folder `dist` from repository
+2. Add `dist/bundle.js` file to your page.
+
+### Load from CDN
+
+You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/codex.editor.raw).
+
+`https://cdn.jsdelivr.net/npm/codex.editor.raw@2.0.1`
+
+Require this script on a page with CodeX Editor.
+
+```html
+<script src="..."></script>
 ```
 
-## Install directly
+## Usage
 
-1. Download folder `lib` from repository
-2. Add `lib/bundle.js` and `lib/bundle.css` files to your page.
+Add a new Tool to the `tools` property of the CodeX Editor initial config.
 
-## CodeX Editor
+```javascript
+var editor = CodexEditor({
+  ...
+  
+  tools: {
+    ...
+    raw: Raw,
+  }
+  
+  ...
+});
+```
 
-API oriented, open-source, block-styled Edtior.
+## Config Params
 
-https://github.com/codex-team/codex.editor
+This Tool has no config params
 
-## Authors
+## Output data
 
-We are small team of Web-developing fans consisting of IFMO students and graduates located in St. Petersburg, Russia.
-Fell free to give us a feedback on <a href="mailto::team@ifmo.su">team@ifmo.su</a>
+This Tool returns raw HTML data.
 
-https://ifmo.su
+```json
+{
+    "type" : "raw",
+    "data" : {
+        "rawHTML" : "<p>Why Telegram is the best messenger</p>",
+    }
+}
+```
 
-### Follow us!
-
-VK: https://vk.com/codex_team
-
-Telegram: https://t.me/codex_team
-
-Instagram: https://www.instagram.com/codex_team
