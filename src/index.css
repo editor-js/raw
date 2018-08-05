@@ -7,12 +7,10 @@
   margin: 1em auto;
   padding: 0.6em 1em;
   box-sizing: border-box;
-  white-space: pre;
   outline: none;
   resize: vertical;
   font-size: 15px;
   line-height: 1.7em;
-  overflow: auto;
   letter-spacing: 0.015em;
 }
 

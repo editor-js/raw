@@ -4,7 +4,7 @@
 
 Raw Tool for the [CodeX Editor](https://ifmo.su/editor).
 
-![](https://capella.pics/bb0e24c0-4765-493a-b550-c23ef39fe66d.jpg)
+![](https://capella.pics/a4f82a6e-4c39-472f-b705-6a95b16ab41f.jpg)
 
 ## Installation
 
