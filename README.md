@@ -19,7 +19,7 @@ npm i --save-dev codex.editor.raw
 Include module at your application
 
 ```javascript
-const Raw = require('codex.editor.raw');
+const RawTool = require('codex.editor.raw');
 ```
 
 ### Download to your project's source dir
@@ -49,7 +49,7 @@ var editor = CodexEditor({
   
   tools: {
     ...
-    raw: Raw,
+    raw: RawTool,
   }
   
   ...
@@ -68,7 +68,7 @@ This Tool returns raw HTML data.
 {
     "type" : "raw",
     "data" : {
-        "rawHTML" : "<p>Why Telegram is the best messenger</p>",
+        "html" : ""html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any HTML code</div>"",
     }
 }
 ```
