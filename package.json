@@ -6,7 +6,7 @@
     "raw",
     "tool"
   ],
-  "description": "Raw Tool for CodeX.Editor",
+  "description": "Raw HTML Tool for CodeX Editor",
   "license": "MIT",
   "repository": "https://github.com/codex-editor/raw",
   "main": "./dist/bundle.js",

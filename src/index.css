@@ -1,9 +1,6 @@
-.ce-textearea {
-  min-height: 200px;
-  font-size: 15px;
-
-  &::placeholder {
-    opacity: 0.3;
-  }
+.ce-rawtool__textarea {
+    min-height: 200px;
+    font-size: 15px;
 }
+
 

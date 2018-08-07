@@ -4,7 +4,7 @@
 require('./index.css').toString();
 
 /**
- * Raw Plugin for the CodeX Editor.
+ * Raw HTML Tool for CodeX Editor
  *
  * @author CodeX (team@ifmo.su)
  * @copyright CodeX 2018
@@ -25,20 +25,20 @@ class RawTool {
     /**
      * Render plugin`s main Element and fill it with saved data
      *
-     * @param {{data: RawData, config: object, api: object}}
-     *   data — previously saved data
-     *   config - user config for Tool
-     *   api - CodeX Editor API
+     * @param {RawData} data — previously saved HTML data
+     * @param {Object} config - user config for Tool
+     * @param {Object} api - CodeX Editor API
      */
     constructor({data, config, api}) {
         this.api = api;
 
-        this.rawToolPlaceholder = config.rawToolPlaceholder || RawTool.DEFAULT_RAWTOOL_PLACEHOLDER;
+        this.placeholder = config.placeholder || RawTool.DEFAULT_PLACEHOLDER;
 
         this.CSS = {
-            block: this.api.styles.block,
+            baseClass: this.api.styles.block,
             input: this.api.styles.input,
-            wrapper: 'ce-textearea'
+            wrapper: 'ce-rawtool',
+            textarea: 'ce-rawtool__textarea'
         };
 
         this.data = {
@@ -54,23 +54,23 @@ class RawTool {
      * @private
      */
     drawView() {
-        let div = document.createElement('div'),
+        let wrapper = document.createElement('div'),
             textarea = document.createElement('textarea');
 
-        div.classList.add(this.CSS.block);
-        textarea.classList.add(this.CSS.wrapper, this.CSS.input);
+        wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
+        textarea.classList.add(this.CSS.textarea, this.CSS.input);
         textarea.textContent = this.data.html;
 
-        textarea.placeholder = this.rawToolPlaceholder;
+        textarea.placeholder = this.placeholder;
 
-        div.appendChild(textarea);
+        wrapper.appendChild(textarea);
 
-        return textarea;
+        return wrapper;
     }
 
     /**
      * Return Tool's view
-     * @returns {HTMLDivElement}
+     * @returns {HTMLDivElement} this.element - RawTool's wrapper
      * @public
      */
     render() {
@@ -79,13 +79,13 @@ class RawTool {
 
     /**
      * Extract Tool's data from the view
-     * @param {HTMLDivElement} rawTextarea - Textarea with HTML RawData
+     * @param {HTMLDivElement} rawToolsWrapper - RawTool's wrapper, containing textarea with raw HTML code
      * @returns {RawData} - raw HTML code
      * @public
      */
-    save(rawTextarea) {
+    save(rawToolsWrapper) {
         return {
-            rawHTML: rawTextarea.value
+            html: rawToolsWrapper.querySelector('textarea').value
         };
     }
 
@@ -98,13 +98,13 @@ class RawTool {
     }
 
     /**
-     * Default placeholder for RawTool textarea
+     * Default placeholder for RawTool's textarea
      *
      * @public
      * @returns {string}
      */
-    static get DEFAULT_RAWTOOL_PLACEHOLDER() {
-        return 'Enter raw HTML';
+    static get DEFAULT_PLACEHOLDER() {
+        return 'Enter HTML code';
     }
 
 }

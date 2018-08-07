@@ -4,7 +4,7 @@
 
 Raw Tool for the [CodeX Editor](https://ifmo.su/editor).
 
-![](https://capella.pics/a4f82a6e-4c39-472f-b705-6a95b16ab41f.jpg)
+![](https://capella.pics/425b1484-38dd-4b4e-acb0-bbfbcf0d0a93.jpg)
 
 ## Installation
 
@@ -58,17 +58,19 @@ var editor = CodexEditor({
 
 ## Config Params
 
-This Tool has no config params
+| Field       | Type     | Description                   |
+| ----------- | -------- | ------------------------------|
+| placeholder | `string` | Raw Tool's placeholder string |
 
 ## Output data
 
-This Tool returns raw HTML data.
+This Tool returns raw HTML code.
 
 ```json
 {
     "type" : "raw",
     "data" : {
-        "html" : ""html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any HTML code</div>"",
+        "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any HTML code</div>",
     }
 }
 ```
