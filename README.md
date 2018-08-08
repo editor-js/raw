@@ -1,6 +1,6 @@
 ![](https://badgen.net/badge/CodeX%20Editor/v2.0/blue)
 
-# Raw Tool for CodeX Editor
+# Raw HTML Tool for CodeX Editor
 
 Raw Tool for the [CodeX Editor](https://ifmo.su/editor).
 

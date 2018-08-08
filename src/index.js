@@ -25,6 +25,7 @@ class RawTool {
     /**
      * Render plugin`s main Element and fill it with saved data
      *
+     * @typedef {HTMLElement} RawData
      * @param {RawData} data — previously saved HTML data
      * @param {Object} config - user config for Tool
      * @param {Object} api - CodeX Editor API
