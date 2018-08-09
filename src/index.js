@@ -23,6 +23,15 @@ class RawTool {
     }
 
     /**
+     * Allow to press Enter inside the RawTool textarea
+     * @returns {boolean}
+     * @public
+     */
+    static get enableLineBreaks() {
+        return true;
+    }
+
+    /**
      * @typedef {Object} RawData — plugin saved data
      * @param {String} html - previously saved HTML code
      */
