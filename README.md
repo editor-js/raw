@@ -2,9 +2,9 @@
 
 # Raw HTML Tool for CodeX Editor
 
-Raw Tool for the [CodeX Editor](https://ifmo.su/editor).
+Raw Tool for the [CodeX Editor](https://ifmo.su/editor) allows to include raw HTML code in your articles.
 
-![](https://capella.pics/425b1484-38dd-4b4e-acb0-bbfbcf0d0a93.jpg)
+![](https://capella.pics/cc69695f-82bf-48ad-84f7-eea3863783e4.jpg)
 
 ## Installation
 
