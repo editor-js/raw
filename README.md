@@ -4,7 +4,7 @@
 
 Raw Tool for the [CodeX Editor](https://ifmo.su/editor) allows to include raw HTML code in your articles.
 
-![](https://capella.pics/cc69695f-82bf-48ad-84f7-eea3863783e4.jpg)
+![](https://capella.pics/e151916b-c991-43a2-9483-f475bf0430d3.jpg)
 
 ## Installation
 
