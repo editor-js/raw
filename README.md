@@ -31,7 +31,7 @@ const RawTool = require('codex.editor.raw');
 
 You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/codex.editor.raw).
 
-`https://cdn.jsdelivr.net/npm/codex.editor.raw@2.0.1`
+`https://cdn.jsdelivr.net/npm/codex.editor.raw@2.0.0`
 
 Require this script on a page with CodeX Editor.
 
