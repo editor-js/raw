@@ -1,7 +1,11 @@
 .ce-rawtool__textarea {
     min-height: 200px;
-    font-size: 15px;
     resize: vertical;
+    border-radius: 5px;
+    background-color: #1e2128;
+    font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+    font-size: 10px;
+    line-height: 1.8;
+    letter-spacing: -0.2px;
+    color: #9ca3b3;
 }
-
-
