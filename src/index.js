@@ -13,113 +13,119 @@ require('./index.css').toString();
  */
 
 class RawTool {
-    /**
-     * Should this tool be displayed at the Editor's Toolbox
-     * @returns {boolean}
-     * @public
-     */
-    static get displayInToolbox() {
-        return true;
-    }
+  /**
+   * Should this tool be displayed at the Editor's Toolbox
+   * @returns {boolean}
+   * @public
+   */
+  static get displayInToolbox() {
+    return true;
+  }
 
-    /**
-     * Allow to press Enter inside the RawTool textarea
-     * @returns {boolean}
-     * @public
-     */
-    static get enableLineBreaks() {
-        return true;
-    }
+  /**
+   * Allow to press Enter inside the RawTool textarea
+   * @returns {boolean}
+   * @public
+   */
+  static get enableLineBreaks() {
+    return true;
+  }
 
-    /**
-     * @typedef {Object} RawData — plugin saved data
-     * @param {String} html - previously saved HTML code
-     */
+  /**
+   * Get Tool toolbox settings
+   * icon - Tool icon's SVG
+   * title - title to show in toolbox
+   *
+   * @return {{icon: string, title: string}}
+   */
+  static get toolbox() {
+    return {
+      icon: `<svg width="19" height="13"><path d="M18.004 5.794c.24.422.18.968-.18 1.328l-4.943 4.943a1.105 1.105 0 1 1-1.562-1.562l4.162-4.162-4.103-4.103A1.125 1.125 0 1 1 12.97.648l4.796 4.796c.104.104.184.223.239.35zm-15.142.547l4.162 4.162a1.105 1.105 0 1 1-1.562 1.562L.519 7.122c-.36-.36-.42-.906-.18-1.328a1.13 1.13 0 0 1 .239-.35L5.374.647a1.125 1.125 0 0 1 1.591 1.591L2.862 6.341z"/></svg>`,
+      title: 'Raw HTML'
+    };
+  }
 
-    /**
-     * Render plugin`s main Element and fill it with saved data
-     *
-     * @param {RawData} data — previously saved HTML data
-     * @param {Object} config - user config for Tool
-     * @param {Object} api - CodeX Editor API
-     */
-    constructor({data, config, api}) {
-        this.api = api;
+  /**
+   * @typedef {Object} RawData — plugin saved data
+   * @param {String} html - previously saved HTML code
+   */
 
-        this.placeholder = config.placeholder || RawTool.DEFAULT_PLACEHOLDER;
+  /**
+   * Render plugin`s main Element and fill it with saved data
+   *
+   * @param {RawData} data — previously saved HTML data
+   * @param {Object} config - user config for Tool
+   * @param {Object} api - CodeX Editor API
+   */
+  constructor({data, config, api}) {
+    this.api = api;
 
-        this.CSS = {
-            baseClass: this.api.styles.block,
-            input: this.api.styles.input,
-            wrapper: 'ce-rawtool',
-            textarea: 'ce-rawtool__textarea'
-        };
+    this.placeholder = config.placeholder || RawTool.DEFAULT_PLACEHOLDER;
 
-        this.data = {
-            html: data.html || ''
-        };
+    this.CSS = {
+      baseClass: this.api.styles.block,
+      input: this.api.styles.input,
+      wrapper: 'ce-rawtool',
+      textarea: 'ce-rawtool__textarea'
+    };
 
-        this.element = this.drawView();
-    }
+    this.data = {
+      html: data.html || ''
+    };
 
-    /**
-     * Create Tool's view
-     * @return {HTMLElement}
-     * @private
-     */
-    drawView() {
-        let wrapper = document.createElement('div'),
-            textarea = document.createElement('textarea');
+    this.element = this.drawView();
+  }
 
-        wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
-        textarea.classList.add(this.CSS.textarea, this.CSS.input);
-        textarea.textContent = this.data.html;
+  /**
+   * Create Tool's view
+   * @return {HTMLElement}
+   * @private
+   */
+  drawView() {
+    let wrapper = document.createElement('div'),
+        textarea = document.createElement('textarea');
 
-        textarea.placeholder = this.placeholder;
+    wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
+    textarea.classList.add(this.CSS.textarea, this.CSS.input);
+    textarea.textContent = this.data.html;
 
-        wrapper.appendChild(textarea);
+    textarea.placeholder = this.placeholder;
 
-        return wrapper;
-    }
+    wrapper.appendChild(textarea);
 
-    /**
-     * Return Tool's view
-     * @returns {HTMLDivElement} this.element - RawTool's wrapper
-     * @public
-     */
-    render() {
-        return this.element;
-    }
+    return wrapper;
+  }
 
-    /**
-     * Extract Tool's data from the view
-     * @param {HTMLDivElement} rawToolsWrapper - RawTool's wrapper, containing textarea with raw HTML code
-     * @returns {RawData} - raw HTML code
-     * @public
-     */
-    save(rawToolsWrapper) {
-        return {
-            html: rawToolsWrapper.querySelector('textarea').value
-        };
-    }
+  /**
+   * Return Tool's view
+   * @returns {HTMLDivElement} this.element - RawTool's wrapper
+   * @public
+   */
+  render() {
+    return this.element;
+  }
 
-    /**
-     * Get Tool icon's SVG
-     * @return {string}
-     */
-    static get toolboxIcon() {
-        return `<svg width="19" height="13"><path d="M18.004 5.794c.24.422.18.968-.18 1.328l-4.943 4.943a1.105 1.105 0 1 1-1.562-1.562l4.162-4.162-4.103-4.103A1.125 1.125 0 1 1 12.97.648l4.796 4.796c.104.104.184.223.239.35zm-15.142.547l4.162 4.162a1.105 1.105 0 1 1-1.562 1.562L.519 7.122c-.36-.36-.42-.906-.18-1.328a1.13 1.13 0 0 1 .239-.35L5.374.647a1.125 1.125 0 0 1 1.591 1.591L2.862 6.341z"/></svg>`
-    }
+  /**
+   * Extract Tool's data from the view
+   * @param {HTMLDivElement} rawToolsWrapper - RawTool's wrapper, containing textarea with raw HTML code
+   * @returns {RawData} - raw HTML code
+   * @public
+   */
+  save(rawToolsWrapper) {
+    return {
+      html: rawToolsWrapper.querySelector('textarea').value
+    };
+  }
 
-    /**
-     * Default placeholder for RawTool's textarea
-     *
-     * @public
-     * @returns {string}
-     */
-    static get DEFAULT_PLACEHOLDER() {
-        return 'Enter HTML code';
-    }
+  /**
+   * Default placeholder for RawTool's textarea
+   *
+   * @public
+   * @returns {string}
+   */
+  static get DEFAULT_PLACEHOLDER() {
+    return 'Enter HTML code';
+  }
 
 }
 
