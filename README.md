@@ -1,8 +1,8 @@
 ![](https://badgen.net/badge/CodeX%20Editor/v2.0/blue)
 
-# Raw HTML Tool for CodeX Editor
+# Raw HTML Tool for Editor.js
 
-Raw Tool for the [CodeX Editor](https://ifmo.su/editor) allows to include raw HTML code in your articles.
+Raw Tool for the [Editor.js](https://codex.so/editor) allows to include raw HTML code in your articles.
 
 ![](https://capella.pics/5195d944-966d-40cf-8f86-78c6349d94cb.jpg)
 
@@ -13,13 +13,13 @@ Raw Tool for the [CodeX Editor](https://ifmo.su/editor) allows to include raw HT
 Get the package
 
 ```shell
-npm i --save-dev codex.editor.raw
+npm i --save-dev @editorjs/raw
 ```
 
 Include module at your application
 
 ```javascript
-const RawTool = require('codex.editor.raw');
+const RawTool = require('@editorjs/raw');
 ```
 
 ### Download to your project's source dir
@@ -29,9 +29,9 @@ const RawTool = require('codex.editor.raw');
 
 ### Load from CDN
 
-You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/codex.editor.raw).
+You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/raw).
 
-`https://cdn.jsdelivr.net/npm/codex.editor.raw@2.0.0`
+`https://cdn.jsdelivr.net/npm/@editorjs/raw`
 
 Require this script on a page with CodeX Editor.
 
