@@ -127,6 +127,15 @@ class RawTool {
     return 'Enter HTML code';
   }
 
+  /**
+   * Automatic sanitize config
+   */
+  static get sanitize(){
+    return {
+      html: true // Allow HTML tags
+    };
+  }
+
 }
 
 module.exports = RawTool;
