@@ -12,9 +12,22 @@ require('./index.css').toString();
  * @version 2.0.0
  */
 
+/**
+ *
+ */
 class RawTool {
   /**
+   * Notify core that read-only mode is supported
+   *
+   * @returns {boolean}
+   */
+  static get isReadOnlySupported() {
+    return true;
+  }
+
+  /**
    * Should this tool be displayed at the Editor's Toolbox
+   *
    * @returns {boolean}
    * @public
    */
@@ -24,6 +37,7 @@ class RawTool {
 
   /**
    * Allow to press Enter inside the RawTool textarea
+   *
    * @returns {boolean}
    * @public
    */
@@ -36,29 +50,32 @@ class RawTool {
    * icon - Tool icon's SVG
    * title - title to show in toolbox
    *
-   * @return {{icon: string, title: string}}
+   * @returns {{icon: string, title: string}}
    */
   static get toolbox() {
     return {
-      icon: `<svg width="19" height="13"><path d="M18.004 5.794c.24.422.18.968-.18 1.328l-4.943 4.943a1.105 1.105 0 1 1-1.562-1.562l4.162-4.162-4.103-4.103A1.125 1.125 0 1 1 12.97.648l4.796 4.796c.104.104.184.223.239.35zm-15.142.547l4.162 4.162a1.105 1.105 0 1 1-1.562 1.562L.519 7.122c-.36-.36-.42-.906-.18-1.328a1.13 1.13 0 0 1 .239-.35L5.374.647a1.125 1.125 0 0 1 1.591 1.591L2.862 6.341z"/></svg>`,
-      title: 'Raw HTML'
+      icon: '<svg width="19" height="13"><path d="M18.004 5.794c.24.422.18.968-.18 1.328l-4.943 4.943a1.105 1.105 0 1 1-1.562-1.562l4.162-4.162-4.103-4.103A1.125 1.125 0 1 1 12.97.648l4.796 4.796c.104.104.184.223.239.35zm-15.142.547l4.162 4.162a1.105 1.105 0 1 1-1.562 1.562L.519 7.122c-.36-.36-.42-.906-.18-1.328a1.13 1.13 0 0 1 .239-.35L5.374.647a1.125 1.125 0 0 1 1.591 1.591L2.862 6.341z"/></svg>',
+      title: 'Raw HTML',
     };
   }
 
   /**
-   * @typedef {Object} RawData — plugin saved data
-   * @param {String} html - previously saved HTML code
+   * @typedef {object} RawData — plugin saved data
+   * @param {string} html - previously saved HTML code
+   * @property
    */
 
   /**
    * Render plugin`s main Element and fill it with saved data
    *
    * @param {RawData} data — previously saved HTML data
-   * @param {Object} config - user config for Tool
-   * @param {Object} api - CodeX Editor API
+   * @param {object} config - user config for Tool
+   * @param {object} api - CodeX Editor API
+   * @param {boolean} readOnly - read-only mode flag
    */
-  constructor({data, config, api}) {
+  constructor({ data, config, api, readOnly }) {
     this.api = api;
+    this.readOnly = readOnly;
 
     this.placeholder = config.placeholder || RawTool.DEFAULT_PLACEHOLDER;
 
@@ -66,11 +83,11 @@ class RawTool {
       baseClass: this.api.styles.block,
       input: this.api.styles.input,
       wrapper: 'ce-rawtool',
-      textarea: 'ce-rawtool__textarea'
+      textarea: 'ce-rawtool__textarea',
     };
 
     this.data = {
-      html: data.html || ''
+      html: data.html || '',
     };
 
     this.element = this.drawView();
@@ -78,11 +95,12 @@ class RawTool {
 
   /**
    * Create Tool's view
-   * @return {HTMLElement}
+   *
+   * @returns {HTMLElement}
    * @private
    */
   drawView() {
-    let wrapper = document.createElement('div'),
+    const wrapper = document.createElement('div'),
         textarea = document.createElement('textarea');
 
     wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
@@ -91,6 +109,10 @@ class RawTool {
 
     textarea.placeholder = this.placeholder;
 
+    if (this.readOnly) {
+      textarea.disabled = true;
+    }
+
     wrapper.appendChild(textarea);
 
     return wrapper;
@@ -98,6 +120,7 @@ class RawTool {
 
   /**
    * Return Tool's view
+   *
    * @returns {HTMLDivElement} this.element - RawTool's wrapper
    * @public
    */
@@ -107,13 +130,14 @@ class RawTool {
 
   /**
    * Extract Tool's data from the view
+   *
    * @param {HTMLDivElement} rawToolsWrapper - RawTool's wrapper, containing textarea with raw HTML code
    * @returns {RawData} - raw HTML code
    * @public
    */
   save(rawToolsWrapper) {
     return {
-      html: rawToolsWrapper.querySelector('textarea').value
+      html: rawToolsWrapper.querySelector('textarea').value,
     };
   }
 
@@ -130,12 +154,11 @@ class RawTool {
   /**
    * Automatic sanitize config
    */
-  static get sanitize(){
+  static get sanitize() {
     return {
-      html: true // Allow HTML tags
+      html: true, // Allow HTML tags
     };
   }
-
 }
 
 module.exports = RawTool;
