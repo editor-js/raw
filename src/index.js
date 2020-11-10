@@ -113,11 +113,12 @@ export default class RawTool {
 
     if (this.readOnly) {
       this.textarea.disabled = true;
+    } else {
+      this.textarea.addEventListener('input', () => {
+        this.onInput();
+      });
     }
 
-    this.textarea.addEventListener('input', () => {
-      this.onInput();
-    });
 
     wrapper.appendChild(this.textarea);
 
