@@ -1,21 +1,20 @@
 /**
  * Build styles
  */
-require('./index.css').toString();
+import './index.css';
 
 /**
  * Raw HTML Tool for CodeX Editor
  *
- * @author CodeX (team@ifmo.su)
+ * @author CodeX (team@codex.so)
  * @copyright CodeX 2018
  * @license The MIT License (MIT)
- * @version 2.0.0
  */
 
 /**
  *
  */
-class RawTool {
+export default class RawTool {
   /**
    * Notify core that read-only mode is supported
    *
@@ -90,32 +89,8 @@ class RawTool {
       html: data.html || '',
     };
 
-    this.element = this.drawView();
-  }
-
-  /**
-   * Create Tool's view
-   *
-   * @returns {HTMLElement}
-   * @private
-   */
-  drawView() {
-    const wrapper = document.createElement('div'),
-        textarea = document.createElement('textarea');
-
-    wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
-    textarea.classList.add(this.CSS.textarea, this.CSS.input);
-    textarea.textContent = this.data.html;
-
-    textarea.placeholder = this.placeholder;
-
-    if (this.readOnly) {
-      textarea.disabled = true;
-    }
-
-    wrapper.appendChild(textarea);
-
-    return wrapper;
+    this.textarea = null;
+    this.resizeDebounce = null;
   }
 
   /**
@@ -125,7 +100,33 @@ class RawTool {
    * @public
    */
   render() {
-    return this.element;
+    const wrapper = document.createElement('div');
+    const renderingTime = 100;
+
+    this.textarea = document.createElement('textarea');
+
+    wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
+
+    this.textarea.classList.add(this.CSS.textarea, this.CSS.input);
+    this.textarea.textContent = this.data.html;
+    this.textarea.placeholder = this.placeholder;
+
+    if (this.readOnly) {
+      this.textarea.disabled = true;
+    } else {
+      this.textarea.addEventListener('input', () => {
+        this.onInput();
+      });
+    }
+
+
+    wrapper.appendChild(this.textarea);
+
+    setTimeout(() => {
+      this.resize();
+    }, renderingTime);
+
+    return wrapper;
   }
 
   /**
@@ -159,6 +160,29 @@ class RawTool {
       html: true, // Allow HTML tags
     };
   }
-}
 
-module.exports = RawTool;
+  /**
+   * Textarea change event
+   *
+   * @returns {void}
+   */
+  onInput() {
+    if (this.resizeDebounce) {
+      clearTimeout(this.resizeDebounce);
+    }
+
+    this.resizeDebounce = setTimeout(() => {
+      this.resize();
+    }, 200);
+  }
+
+  /**
+   * Resize textarea to fit whole height
+   *
+   * @returns {void}
+   */
+  resize() {
+    this.textarea.style.height = 'auto';
+    this.textarea.style.height = this.textarea.scrollHeight + 'px';
+  }
+}
