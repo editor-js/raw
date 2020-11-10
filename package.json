@@ -28,7 +28,5 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   },
-  "dependencies": {
-    "codemirror": "^5.58.2"
-  }
+  "dependencies": {}
 }
