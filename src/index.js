@@ -59,6 +59,19 @@ export default class RawTool {
   }
 
   /**
+   * Permit to convert paragraph, heading, list... to RAW
+   * the opposite is not possible
+   *
+   * @returns {{export: string, import: string}}
+   */
+  static get conversionConfig() {
+        return {
+            export: "html",
+            import: "html",
+        };
+    }
+  
+  /**
    * @typedef {object} RawData — plugin saved data
    * @param {string} html - previously saved HTML code
    * @property
