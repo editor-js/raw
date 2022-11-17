@@ -1,6 +1,6 @@
 {
   "name": "@editorjs/raw",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "keywords": [
     "codex editor",
     "raw",
@@ -28,5 +28,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@codexteam/icons": "^0.0.4"
+  }
 }
