@@ -3,7 +3,7 @@
  */
 import './index.css';
 
-import { IconInlineCode } from '@codexteam/icons';
+import { IconHtml } from '@codexteam/icons';
 
 /**
  * Raw HTML Tool for CodeX Editor
@@ -55,7 +55,7 @@ export default class RawTool {
    */
   static get toolbox() {
     return {
-      icon: IconInlineCode,
+      icon: IconHtml,
       title: 'Raw HTML',
     };
   }
