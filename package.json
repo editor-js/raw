@@ -4,16 +4,25 @@
   "keywords": [
     "codex editor",
     "raw",
-    "tool",
     "editorjs"
   ],
   "description": "Raw HTML Tool for Editor.js",
   "license": "MIT",
   "repository": "https://github.com/editor-js/raw",
-  "main": "./dist/bundle.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/checklist.umd.js",
+  "module": "./dist/checklist.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/checklist.mjs",
+      "require": "./dist/checklist.umd.js"
+    }
+  },
   "scripts": {
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development --watch"
+    "dev": "vite",
+    "build": "vite build"
   },
   "author": {
     "name": "CodeX",
