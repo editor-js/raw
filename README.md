@@ -20,17 +20,7 @@ Include module at your application
 import RawTool from '@editorjs/raw';
 ```
 
-### Load from CDN
-
-You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/raw).
-
-`https://cdn.jsdelivr.net/npm/@editorjs/raw@latest`
-
-Require this script on a page with CodeX Editor.
-
-```html
-<script src="..."></script>
-```
+Optionally, you can load this tool from CDN [JsDelivr CDN](https://cdn.jsdelivr.net/npm/@editorjs/raw@latest)
 
 ## Usage
 
