@@ -13,25 +13,20 @@ Raw Tool for the [Editor.js](https://codex.so/editor) allows to include raw HTML
 Get the package
 
 ```shell
-npm i --save-dev @editorjs/raw
+yarn add @editorjs/raw
 ```
 
 Include module at your application
 
 ```javascript
-const RawTool = require('@editorjs/raw');
+import RawTool from '@editorjs/raw';
 ```
-
-### Download to your project's source dir
-
-1. Upload folder `dist` from repository
-2. Add `dist/bundle.js` file to your page.
 
 ### Load from CDN
 
 You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/raw).
 
-`https://cdn.jsdelivr.net/npm/@editorjs/raw`
+`https://cdn.jsdelivr.net/npm/@editorjs/raw@latest`
 
 Require this script on a page with CodeX Editor.
 
