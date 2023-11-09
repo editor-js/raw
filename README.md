@@ -8,8 +8,6 @@ Raw Tool for the [Editor.js](https://codex.so/editor) allows to include raw HTML
 
 ## Installation
 
-### Install via NPM
-
 Get the package
 
 ```shell
