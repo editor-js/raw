@@ -21,6 +21,10 @@ Include module at your application
 ```javascript
 const RawTool = require('@editorjs/raw');
 ```
+OR
+```javascript
+import RawTool from "@editorjs/raw";
+```
 
 ### Download to your project's source dir
 
