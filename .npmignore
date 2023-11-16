@@ -1,8 +1,5 @@
 .idea/
 src/
-.eslintrc
 .jshintrc
-.postcssrc
-.stylelintrc
-webpack.config.js
+vite.config.js
 yarn.lock
