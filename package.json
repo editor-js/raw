@@ -1,32 +1,36 @@
 {
   "name": "@editorjs/raw",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "keywords": [
     "codex editor",
     "raw",
-    "tool",
     "editorjs"
   ],
   "description": "Raw HTML Tool for Editor.js",
   "license": "MIT",
   "repository": "https://github.com/editor-js/raw",
-  "main": "./dist/bundle.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/raw.umd.js",
+  "module": "./dist/raw.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/raw.mjs",
+      "require": "./dist/raw.umd.js"
+    }
+  },
   "scripts": {
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development --watch"
+    "dev": "vite",
+    "build": "vite build"
   },
   "author": {
     "name": "CodeX",
     "email": "team@codex.so"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^1.0.0",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "vite": "^4.5.0",
+    "vite-plugin-css-injected-by-js": "^3.3.0"
   },
   "dependencies": {
     "@codexteam/icons": "^0.0.4"
