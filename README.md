@@ -19,6 +19,10 @@ Include module at your application
 ```javascript
 import RawTool from '@editorjs/raw';
 ```
+OR
+```javascript
+import RawTool from "@editorjs/raw";
+```
 
 Optionally, you can load this tool from CDN [JsDelivr CDN](https://cdn.jsdelivr.net/npm/@editorjs/raw@latest)
 
