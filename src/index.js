@@ -91,7 +91,7 @@ export default class RawTool {
       html: data.html || '',
     };
 
-    this.textarea = null;
+    this.textarea = this.drawView();
     this.resizeDebounce = null;
   }
 
@@ -99,35 +99,45 @@ export default class RawTool {
    * Return Tool's view
    *
    * @returns {HTMLDivElement} this.element - RawTool's wrapper
-   * @public
+   * @private
    */
-  render() {
+  drawView() {
     const wrapper = document.createElement('div');
     const renderingTime = 100;
 
-    this.textarea = document.createElement('textarea');
+    const textArea = document.createElement('textarea');
 
     wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
 
-    this.textarea.classList.add(this.CSS.textarea, this.CSS.input);
-    this.textarea.textContent = this.data.html;
-    this.textarea.placeholder = this.placeholder;
+    textArea.classList.add(this.CSS.textarea, this.CSS.input);
+    textArea.textContent = this.data.html;
+    textArea.placeholder = this.placeholder;
 
     if (this.readOnly) {
-      this.textarea.disabled = true;
+      textarea.disabled = true;
     } else {
-      this.textarea.addEventListener('input', () => {
+      textArea.addEventListener('input', () => {
         this.onInput();
       });
     }
 
-    wrapper.appendChild(this.textarea);
+    wrapper.appendChild(textArea);
 
     setTimeout(() => {
       this.resize();
     }, renderingTime);
 
     return wrapper;
+  }
+
+  /**
+   * Return Tool's view
+   *
+   * @returns {HTMLDivElement} this.element - RawTool's wrapper
+   * @private
+   */
+  render() {
+    return this.textarea;
   }
 
   /**
