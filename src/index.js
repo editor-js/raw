@@ -93,6 +93,8 @@ export default class RawTool {
 
     this.textarea = null;
     this.resizeDebounce = null;
+    
+    this.defaultHeight = config.defaultHeight || 200;
   }
 
   /**
@@ -174,7 +176,7 @@ export default class RawTool {
 
     this.resizeDebounce = setTimeout(() => {
       this.resize();
-    }, 200);
+    }, this.defaultHeight);
   }
 
   /**
