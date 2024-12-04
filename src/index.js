@@ -78,7 +78,7 @@ export default class RawTool {
     this.api = api;
     this.readOnly = readOnly;
 
-    this.placeholder = config.placeholder || RawTool.DEFAULT_PLACEHOLDER;
+    this.placeholder = api.i18n.t(config.placeholder || RawTool.DEFAULT_PLACEHOLDER);
 
     this.CSS = {
       baseClass: this.api.styles.block,
