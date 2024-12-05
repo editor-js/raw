@@ -110,7 +110,7 @@ export default class RawTool {
     wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
 
     this.textarea.classList.add(this.CSS.textarea, this.CSS.input);
-    this.textarea.textContent = this.data.html;
+    this.textarea.value = this.data.html;
     this.textarea.placeholder = this.placeholder;
 
     if (this.readOnly) {
