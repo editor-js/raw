@@ -4,7 +4,7 @@
 
 Raw Tool for the [Editor.js](https://codex.so/editor) allows to include raw HTML code in your articles.
 
-![](https://capella.pics/5195d944-966d-40cf-8f86-78c6349d94cb.jpg)
+![](assets/68747470733a2f2f636170656c6c612e706963732f35313935643934342d393636642d343063662d386638362d3738633633343964393463622e6a7067.jpeg)
 
 ## Installation
 
@@ -29,12 +29,12 @@ Add a new Tool to the `tools` property of the CodeX Editor initial config.
 ```javascript
 var editor = CodexEditor({
   ...
-  
+
   tools: {
     ...
     raw: RawTool,
   }
-  
+
   ...
 });
 ```
